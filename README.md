@@ -13,3 +13,5 @@ cd projectName
 npm start # you can also use: expo start
 
 
+To run the app environment: 
+run npm start inside your project folder, go to localhost 19002 as it directs you, and mess around.

@@ -5,11 +5,16 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Text>Michael is a smanky boy</Text>
-      <Text>Lets get this fucking money XD</Text>
+      <Text>Hi Test App</Text>
+      {/*<View style={styles.numberButton}>
+        <Button
+          onPress={onPressLearnMore}
+          title="1"
+          accessibilityLabel="Learn more about this purple button"
+        />
+      </View>*/}
       <StatusBar style="auto" />
-    </View>
+  </View> 
   );
 }
 
@@ -20,4 +25,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  numberButton: {
+    backgroundColor: '#fff'
+  }
 });

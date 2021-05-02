@@ -1,6 +1,5 @@
 # Calculator
 
-
 Set up
 
 Install NPM

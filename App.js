@@ -13,6 +13,7 @@ export default function App() {
           accessibilityLabel="Learn more about this purple button"
         />
       </View>*/}
+      {/* Trevor Test */}
       <StatusBar style="auto" />
   </View> 
   );

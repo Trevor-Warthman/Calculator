@@ -15,6 +15,10 @@ export default class App extends React.Component {
       }
   }
 
+  evaluate() {
+    console.log(this.state.display)
+  }
+
   setDisplay(num) { 
     this.setState({
       display: num
@@ -51,7 +55,14 @@ export default class App extends React.Component {
         </View>
         <View style={styles.calcKeyRow}>
             <NumKey displayKey="0" onClick={()=> this.addNumber("0")} />
-            <NumKey onClick={()=> this.clear()} displayKey="Clear" />
+            <NumKey onClick={()=> this.clear()} displayKey="C" />
+            <NumKey displayKey="+" onClick={()=> this.addNumber("+")} />
+        </View>
+        <View style={styles.calcKeyRow}>
+            <NumKey displayKey="-" onClick={()=> this.addNumber("-")} />
+            <NumKey displayKey="*" onClick={()=> this.addNumber("*")} />
+            <NumKey displayKey="/" onClick={()=> this.addNumber("/")} />
+            <NumKey displayKey="=" onClick={()=> this.evaluate()} />
         </View>
       </View>
     );

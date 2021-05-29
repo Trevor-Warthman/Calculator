@@ -2,6 +2,7 @@ class Tokenizer {
     constructor(eq) {
         this.eq = eq;
         this.tokens = [];
+        this.currToken = 0;
     }
 
     getEq() {
@@ -14,19 +15,28 @@ class Tokenizer {
     }
 
     getCurrentToken() {
-        return this.tokens.shift();
+        return this.tokens[this.currToken];
     }
 
     getNextToken() {
-        return this.tokens[1];
+        return this.tokens[this.currToken + 1];
+    }
+
+    getPrevToken() {
+        return this.tokens[this.currToken - 1];
+    }
+
+    moveNextToken() {
+        this.currToken += 1;
+    }
+
+    movePrevToken() {
+        this.currToken -= 1;
+    }
+    areRemainingTokens() {
+        return this.tokens.length > this.currToken;
     }
 }
 
-let t = new Tokenizer("1+1*5");
-console.log(t.tokenize());
-console.log(t.getCurrentToken());
-console.log(t.getNextToken());
-console.log(t.getCurrentToken());
-console.log(t.getCurrentToken());
 
 module.exports = {Tokenizer};

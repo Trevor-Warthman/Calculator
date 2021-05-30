@@ -58,17 +58,26 @@ export default class App extends React.Component {
             <NumKey displayKey="7" onClick={()=> this.addNumber("7")} />
             <NumKey displayKey="8" onClick={()=> this.addNumber("8")} />
             <NumKey displayKey="9" onClick={()=> this.addNumber("9")} />
+            <NumKey displayKey="PI" onClick={()=> this.addNumber("PI")} />
         </View>
         <View style={styles.calcKeyRow}>
             <NumKey displayKey="0" onClick={()=> this.addNumber("0")} />
             <NumKey onClick={()=> this.clear()} displayKey="C" />
-            <NumKey displayKey="+" onClick={()=> this.addNumber("+")} />
+            <NumKey displayKey="(" onClick={()=> this.addNumber("(")} />
+            <NumKey displayKey=")" onClick={()=> this.addNumber(")")} />
         </View>
         <View style={styles.calcKeyRow}>
             <NumKey displayKey="-" onClick={()=> this.addNumber("-")} />
             <NumKey displayKey="*" onClick={()=> this.addNumber("*")} />
             <NumKey displayKey="/" onClick={()=> this.addNumber("/")} />
+            <NumKey displayKey="+" onClick={()=> this.addNumber("+")} />
             <NumKey displayKey="=" onClick={()=> this.evaluate()} />
+        </View>
+        <View style={styles.calcKeyRow}>
+            <NumKey displayKey="sin" onClick={()=> this.addNumber("sin(")} />
+            <NumKey displayKey="cos" onClick={()=> this.addNumber("cos(")} />
+            <NumKey displayKey="tan" onClick={()=> this.addNumber("tan(")} />
+            <NumKey displayKey="^" onClick={()=> this.evaluate()} />
         </View>
       </View>
     );

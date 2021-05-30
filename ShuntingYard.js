@@ -20,10 +20,8 @@ class ShuntingYard {
         return this.outputQueue;
     }
     shuntingYard() {
-        this.tokens.tokenize();
         while(this.tokens.areRemainingTokens()) {
             let token = this.tokens.getCurrentToken();
-            console.log(token);
             if(this.isNumber(token)) {
                 this.outputQueue.push(token);
             }
@@ -36,11 +34,11 @@ class ShuntingYard {
                 while(this.keepPoppingOps(token)) {
                     this.outputQueue.push(this.operatorStack.shift())
                 }
-                this.operatorStack.push(token);
+                this.operatorStack.unshift(token);
             }
 
             else if(token == "(") {
-                this.operatorStack.push(token);
+                this.operatorStack.unshift(token);
             }
 
             else if(token == ")") {

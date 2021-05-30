@@ -1,7 +1,7 @@
 class Tokenizer { 
     constructor(eq) {
         this.eq = eq;
-        this.tokens = [];
+        this.tokens = this.tokenize();
         this.currToken = 0;
     }
 
@@ -10,7 +10,14 @@ class Tokenizer {
     }
 
     tokenize() {
-        if(this.tokens = []) this.tokens = this.eq.split(/([+-/*])/g);
+        if(this.tokens = []) {
+            let removedSpaces = this.eq.replace(/ /g,'');
+            this.tokens = removedSpaces.split(/([-+*^/)(]|sin|cos|tang)/).filter(ele => ele != "")
+        }
+        return this.tokens;
+    }
+
+    getTokens() {
         return this.tokens;
     }
 

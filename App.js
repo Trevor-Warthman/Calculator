@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import NumKey from "./components/NumKey.js";
+import { ShuntingYard } from './ShuntingYard.js';
 const { Tokenizer } = require("./Tokenizer");
 
 
@@ -18,7 +19,10 @@ export default class App extends React.Component {
 
   evaluate() {
     let t = new Tokenizer(this.state.display);
-    console.log(t.tokenize());
+    let sh = new ShuntingYard(t);
+    sh.shuntingYard();
+    let ans = sh.evaluatePostfix();
+    this.setDisplay(ans);
   }
 
   setDisplay(num) { 

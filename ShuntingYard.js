@@ -8,7 +8,7 @@ class ShuntingYard {
 
         this.PRECEDENCE = {
             "^": 4, 
-            "*": 4, 
+            "*": 3, 
             "/": 3, 
             "+": 2, 
             "-": 2 
@@ -59,16 +59,19 @@ class ShuntingYard {
     }
 
     evaluatePostfix() {
-        evalStack = [];
-        for(let i = 0; i < this.outputQueue.length; i) {
+        let evalStack = [];
+        for(let i = 0; i < this.outputQueue.length; i+=1) {
             let ele = this.outputQueue[i]
             if(this.isNumber(ele)) {
-                evalStack.push(ele)
+                evalStack.unshift(ele - 0)
             } 
+            else if(this.isOperator(ele)) {
+                let val2 = evalStack.shift()
+                let val1 = evalStack.shift()
+                evalStack.unshift(this.evaluate(val1,val2,ele));
+            }
             else {
-                val1 = evalStack.shift()
-                val2 = evalStack.shift()
-                evalStack.push(evaluate(val1,val2,ele));
+                //do function stuff here
             }
         }
         return evalStack.shift();
@@ -89,7 +92,7 @@ class ShuntingYard {
     }
 
     isOperator(token) {
-        return ["+", "/", "-", "*", "^"].includes(token);
+        return token in this.PRECEDENCE;
     }
 
     keepPoppingOps(token) {

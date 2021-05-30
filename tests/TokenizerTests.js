@@ -10,6 +10,7 @@ assertEquals(["44", "+", "5", "*", "4", "-", "6", "/", "2000"], "44 + 5 * 4 -6/2
 assertEquals(["5", "+", "(", "100", "*", "3", ")"], "5 + (100*3)");
 assertEquals(["sin", "(", "100", ")"], "sin(100)");
 assertEquals(["11", "/","(","10","cos", "(", "100", "+", "4","*","4",")",")"], "11/(10cos(100+4*4))");
+assertEquals(["11.5", "-", "10"], "11.5-10");
 
 function assertEquals(expected, actual) {
     let t = new Tokenizer(actual);

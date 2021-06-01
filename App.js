@@ -26,15 +26,15 @@ export default class App extends React.Component {
     this.setDisplay(ans);
   }
 
-  setDisplay(num) { 
+  setDisplay(num) {
     this.setState({
       display: num
     })
   }
-  
+
   addNumber(num) {
     this.setDisplay(this.state.display + num);
-  } 
+  }
 
   clear() {
     this.setDisplay("");
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent:"space-around",
   },
-    
+
   display:{
     display:"flex",
     justifyContent:"center",
@@ -102,13 +102,15 @@ const styles = StyleSheet.create({
     height:"10%",
     //textAlign:"center",
   },
-    
-  title: {    
+
+  title: {
     color:"goldenrod",
     textAlign:"center",
     fontSize:36,
   },
-    
+  numberButton: {
+    backgroundColor: '#fff'
+  },
   calcKeyRow:{
     display:"flex",
     flexDirection:"row",

@@ -13,13 +13,14 @@ export default class App extends React.Component {
       numerator:"",
       denominator:"",
       operator:"",
-      switchFractionSection:false
+      switchFractionSection:false,
+      radians:true
       }
   }
 
   evaluate() {
     let t = new Tokenizer(this.state.display);
-    let sh = new ShuntingYard(t);
+    let sh = new ShuntingYard(t, this.state.radians);
     sh.shuntingYard();
     let ans = sh.evaluatePostfix();
     this.setDisplay(ans);

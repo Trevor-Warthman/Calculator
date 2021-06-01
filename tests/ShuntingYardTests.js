@@ -34,7 +34,7 @@ assertEquals(["2", "50", "PI", "*", "SIN", "*"], "2sin(50PI)");
 
 function assertEquals(expected, actual) {
     let t = new Tokenizer(actual);
-    let sy = new ShuntingYard(t);
+    let sy = new ShuntingYard(t, true);
     sy.shuntingYard();
     let res = sy.getOutputQueue();
 
@@ -65,9 +65,11 @@ evalEquation(94, "2 * (7+40)");
 evalEquation(1.19694428821, "2sin(50/20)");
 evalEquation(165.003255594, "5tan((4+77/5+cos(sin(3))))");
 evalEquation(5, "5sin(pi/2)");
+evalEquation(25, "5^2");
+evalEquation(1.06440765582, "5^2sin(3^9tan(5)/6)");
 
 function evalEquation(expected, eq) {
-    let sh = new ShuntingYard(new Tokenizer(eq));
+    let sh = new ShuntingYard(new Tokenizer(eq), true);
     sh.shuntingYard();
     let ans = sh.evaluatePostfix() - 0;
     if(ans.toFixed(5) == expected.toFixed(5)) {

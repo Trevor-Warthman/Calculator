@@ -1,11 +1,11 @@
 const { Tokenizer } = require("./Tokenizer");
 
 class ShuntingYard { 
-    constructor(tokens) {
-        this.tokens = tokens
-        this.outputQueue = []
-        this.operatorStack = []
-
+    constructor(tokens, inRadians) {
+        this.tokens = tokens;
+        this.outputQueue = [];
+        this.operatorStack = [];
+        this.inRadians = inRadians;
         this.PRECEDENCE = {
             "^": 4, 
             "*": 3, 
@@ -13,7 +13,7 @@ class ShuntingYard {
             "+": 2, 
             "-": 2 
 
-        }
+        };
     }
 
     getOutputQueue() {
@@ -90,6 +90,9 @@ class ShuntingYard {
     }
     evaluateFunc(func, val) {
         let funcUpper = func.toUpperCase();
+        if(this.inRadians) {
+            val *= Math.PI / 180;
+        }
         if(funcUpper == "SIN") return Math.sin(val)
         if(funcUpper == "COS") return Math.cos(val)
         if(funcUpper == "TAN") return Math.tan(val)

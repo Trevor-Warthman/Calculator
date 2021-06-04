@@ -18,6 +18,19 @@ export default class App extends React.Component {
       }
   }
 
+  parenthesisMatch(s) {
+      let parenArr = s.split(/([()])/).filter(letter => letter == "(" || letter ==")");
+      console.log(`checking ${s}.  arr = ${parenArr}`);
+      let myStack = [];
+      for(let i = 0; i < parenArr.length; i++) {
+        if(parenArr[i] == "(") myStack.unshift("(");
+        else if(myStack.length > 0) myStack.shift();
+        else return false;
+      }
+
+      return myStack.length == 0;
+
+  }
   evaluate() {
     let t = new Tokenizer(this.state.display);
     let sh = new ShuntingYard(t, this.state.radians);
@@ -27,6 +40,7 @@ export default class App extends React.Component {
   }
 
   setDisplay(num) {
+    if(!this.parenthesisMatch(num)) console.log("CANT PRESS ENTER YET");
     this.setState({
       display: num
     })

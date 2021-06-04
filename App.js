@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import NumKey from "./components/NumKey.js";
 import { ShuntingYard } from './ShuntingYard.js';
+import Sqrt from './components/Sqrt.js'
 const { Tokenizer } = require("./Tokenizer");
 
 
@@ -80,6 +81,7 @@ export default class App extends React.Component {
             <NumKey displayKey="tan" onClick={()=> this.addNumber("tan(")} />
             <NumKey displayKey="^" onClick={()=> this.evaluate()} />
         </View>
+        <Sqrt innerEquation="5"/>
       </View>
     );
   }

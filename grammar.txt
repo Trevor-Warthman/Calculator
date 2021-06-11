@@ -1,0 +1,3 @@
+expr := term | expr “+” term | expr “-“ term
+term := num | term “*” num | term “/” num
+num := (-INF, INF)

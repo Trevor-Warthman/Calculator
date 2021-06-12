@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import NumKey from "./components/NumKey.js";
 import { ShuntingYard } from './ShuntingYard.js';
 const { Tokenizer } = require("./Tokenizer");
+import Katex from 'react-native-katex';
 
 
 export default class App extends React.Component {
@@ -10,10 +11,6 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       display:"",
-      numerator:"",
-      denominator:"",
-      operator:"",
-      switchFractionSection:false,
       radians:true
       }
   }
@@ -43,6 +40,18 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.display}>
+        <Katex 
+          expression={"d=\\pm\\sqrt{\\frac{5}{10}}"}
+          style={styles.katex}
+          inlineStyle={inlineStyle}
+          displayMode={false}
+          throwOnError={false}
+          errorColor="#f00"
+          macros={{}}
+          colorIsTextColor={false}
+          onLoad={() => 1}
+          onError={() => console.error('Error')}
+      />
             <Text style={styles.title}>{this.state.display}</Text>
         </View>
         <View style={styles.calcKeyRow}>
@@ -119,3 +128,17 @@ const styles = StyleSheet.create({
     width:"100%",
   }
 });
+
+const inlineStyle =`
+html, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.katex {
+  font-size: 5em;
+  margin-top: 1em;
+  display: flex;
+}
+`;

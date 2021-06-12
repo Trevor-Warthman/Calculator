@@ -41,7 +41,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <View style={styles.display}>
         <Katex 
-          expression={"d=\\pm\\sqrt{\\frac{5}{10}}"}
+          expression={"d=\\pm\\sqrt{sin(5*10)}"}
           style={styles.katex}
           inlineStyle={inlineStyle}
           displayMode={false}

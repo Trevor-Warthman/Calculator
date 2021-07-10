@@ -60,9 +60,12 @@ class ShuntingYard {
     }
 
     evaluatePostfix() {
+        this.evaluatePostfix(this.outputQueue);
+    }
+    evaluatePostfix(outputQueue) {
         let evalStack = [];
-        for(let i = 0; i < this.outputQueue.length; i+=1) {
-            let ele = this.outputQueue[i]
+        for(let i = 0; i < outputQueue.length; i+=1) {
+            let ele = outputQueue[i]
             if(this.isNumber(ele)) {
                 if(ele == "PI") evalStack.unshift(Math.PI);
                 else evalStack.unshift(ele - 0)
@@ -90,7 +93,7 @@ class ShuntingYard {
     }
     evaluateFunc(func, val) {
         let funcUpper = func.toUpperCase();
-        if(this.inRadians) {
+        if(!this.inRadians) {
             val *= Math.PI / 180;
         }
         if(funcUpper == "SIN") return Math.sin(val)

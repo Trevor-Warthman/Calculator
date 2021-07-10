@@ -57,6 +57,7 @@ class ShuntingYard {
         }
 
         this.outputQueue = this.outputQueue.concat(this.operatorStack);
+        return this.outputQueue;
     }
 
     evaluatePostfix() {
